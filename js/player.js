@@ -105,12 +105,10 @@ engine.player.reset = function() {
 
 	engine.viewport.x = x;
 	engine.viewport.y = y;
-
-	engine.keyboard.canInput = true;
-
 	engine.viewport.playerOffset.x = 0;
 	engine.viewport.playerOffset.y = 0;
 
+	engine.keyboard.canInput = true;
 	engine.player.spriteIndex = direction;
 
 	engine.draw();

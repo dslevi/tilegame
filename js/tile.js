@@ -1,7 +1,7 @@
 engine.tile = {
 	draw: function(x, y, tile) {
-		var rx = x * engine.tileSize + engine.viewport.playerOffset.x;
-		var ry = y * engine.tileSize + engine.viewport.playerOffset.y;
+		var rx = x * engine.tileSize;
+		var ry = y * engine.tileSize;
 
 		var ground = engine.tile.retrieve(tile.ground);
 		engine.handle.drawImage(ground, rx, ry);

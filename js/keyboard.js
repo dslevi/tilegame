@@ -12,19 +12,15 @@ engine.keyboard.parseKey = function(event) {
 
 	switch(event.keyCode) {
 		case engine.keyboard.direction.UP:
-			engine.viewport.y--;
 			engine.player.move(engine.player.direction.UP);
 			break;
 		case engine.keyboard.direction.DOWN:
-			engine.viewport.y++;
 			engine.player.move(engine.player.direction.DOWN);
 			break;
 		case engine.keyboard.direction.LEFT:
-			engine.viewport.x--;
 			engine.player.move(engine.player.direction.LEFT);
 			break;
 		case engine.keyboard.direction.RIGHT:
-			engine.viewport.x++;
 			engine.player.move(engine.player.direction.RIGHT);
 			break;
 	}
