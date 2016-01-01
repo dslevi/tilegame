@@ -47,100 +47,76 @@ engine.player.draw = function() {
 	engine.handle.drawImage(engine.player.sprite[engine.player.spriteIndex][0], location.left, location.top);
 };
 
-engine.player.animate = function() {
-	var x = 0;
-	var y = 0;
+engine.player.move = function(direction) {
+	engine.keyboard.canInput = false;
+	engine.player.spriteIndex = direction;
 
-	switch (engine.player.spriteIndex) {
+	switch (direction) {
 		case engine.player.direction.UP:
-			y = 11;
+			engine.viewport.playerOffset.y = 5;
 			break;
 		case engine.player.direction.RIGHT:
-			x = -11;
+			engine.viewport.playerOffset.x = -5;
 			break;
 		case engine.player.direction.LEFT:
-			x = 11;
+			engine.viewport.playerOffset.x = 5;
 			break;
 		case engine.player.direction.DOWN:
-			y = -11;
+			engine.viewport.playerOffset.y = -5;
+			break;
+	}
+
+	engine.draw();
+	setTimeout(engine.player.animate, 50);
+};
+
+engine.player.animate = function() {
+	switch (engine.player.spriteIndex) {
+		case engine.player.direction.UP:
+			engine.viewport.playerOffset.y = 11;
+			break;
+		case engine.player.direction.RIGHT:
+			engine.viewport.playerOffset.x = -11;
+			break;
+		case engine.player.direction.LEFT:
+			engine.viewport.playerOffset.x = 11;
+			break;
+		case engine.player.direction.DOWN:
+			engine.viewport.playerOffset.y = -11;
 			break;
 	}
 
 	engine.player.spriteIndex += (engine.player.leftLeg) ? 1: 2;
 	engine.player.leftLeg = !engine.player.leftLeg;
 
-	engine.viewport.playerOffset.x = x;
-	engine.viewport.playerOffset.y = y;
-
 	engine.draw();
+	setTimeout(engine.player.reset, 50);
 };
 
 engine.player.reset = function() {
-	var direction;
-	var x = engine.viewport.x;
-	var y = engine.viewport.y;
-
 	switch (engine.player.spriteIndex) {
-		case 1:
-		case 2:
-			y--;
-			direction = engine.player.direction.UP;
+		case 1: case 2:
+			engine.viewport.y--;
+			engine.player.spriteIndex = engine.player.direction.UP;
 			break;
-		case 4:
-		case 5:
-			x++;
-			direction = engine.player.direction.RIGHT;
+		case 4: case 5:
+			engine.viewport.x++;
+			engine.player.spriteIndex = engine.player.direction.RIGHT;
 			break;
-		case 7:
-		case 8:
-			y++;
-			direction = engine.player.direction.DOWN;
+		case 7: case 8:
+			engine.viewport.y++;
+			engine.player.spriteIndex = engine.player.direction.DOWN;
 			break;
-		case 10:
-		case 11:
-			x--;
-			direction = engine.player.direction.LEFT;
+		case 10: case 11:
+			engine.viewport.x--;
+			engine.player.spriteIndex = engine.player.direction.LEFT;
 			break;
 	}
 
-	engine.viewport.x = x;
-	engine.viewport.y = y;
 	engine.viewport.playerOffset.x = 0;
 	engine.viewport.playerOffset.y = 0;
 
+	engine.draw();
+
 	engine.keyboard.canInput = true;
-	engine.player.spriteIndex = direction;
-
-	engine.draw();
-};
-
-engine.player.move = function(direction) {
-	engine.keyboard.canInput = false;
-
-	var x = 0;
-	var y = 0;
-
-	switch (direction) {
-		case engine.player.direction.UP:
-			y = 5;
-			break;
-		case engine.player.direction.RIGHT:
-			x = -5;
-			break;
-		case engine.player.direction.LEFT:
-			x = 5;
-			break;
-		case engine.player.direction.DOWN:
-			y = -5;
-			break;
-	}
-
-	engine.player.spriteIndex = direction;
-	engine.viewport.playerOffset.x = x;
-	engine.viewport.playerOffset.y = y;
-
-	setTimeout(engine.player.animate, 100);
-	setTimeout(engine.player.reset, 200);
-
-	engine.draw();
 };
