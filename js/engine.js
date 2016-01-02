@@ -26,21 +26,8 @@ engine.start = function(mapData, x, y) {
 	engine.tile.store(5, 'img/cave.png');
 	engine.tile.store(6, 'img/sign.png');
 
-	engine.player.store(0, 'img/scientist_n0.png');
-	engine.player.store(1, 'img/scientist_n1.png');
-	engine.player.store(2, 'img/scientist_n2.png');
-
-	engine.player.store(3, 'img/scientist_e0.png');
-	engine.player.store(4, 'img/scientist_e1.png');
-	engine.player.store(5, 'img/scientist_e2.png');
-
-	engine.player.store(6, 'img/scientist_s0.png');
-	engine.player.store(7, 'img/scientist_s1.png');
-	engine.player.store(8, 'img/scientist_s2.png');
-
-	engine.player.store(9,  'img/scientist_w0.png');
-	engine.player.store(10, 'img/scientist_w1.png');
-	engine.player.store(11, 'img/scientist_w2.png');
+	engine.model.load(0, 'scientist');
+	engine.model.load(1, 'officer');
 
 	engine.map.set(mapData);
 	engine.draw();

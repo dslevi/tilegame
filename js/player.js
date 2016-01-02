@@ -1,5 +1,4 @@
 engine.player = {};
-engine.player.sprite = {};
 
 engine.player.direction = {
 	UP: 0,
@@ -9,42 +8,20 @@ engine.player.direction = {
 };
 
 engine.player.spriteIndex = engine.player.direction.DOWN;
+
+engine.player.model = 0;
+
 engine.player.leftLeg = false;
 
-engine.player.store = function(id, src) {
-	var sprite = [new Image(), false];
-	sprite[0].src = src;
-	sprite[0].addEventListener('load', function() {
-		sprite[1] = true;
-	});
-
-	engine.player.sprite[id] = sprite;
-};
-
-engine.player.retrieve = function(id) {
-	return engine.player.sprite[id];
-};
-
-engine.player.allLoaded = function() {
-	var sprite = engine.player.sprite;
-	for (var id in sprite) {
-		if (sprite.hasOwnProperty(id) && !sprite[id][i]) return false;
-	}
-	return true;
-};
-
-engine.player.getLocation = function() {
-	var sprite = engine.player.sprite[0][0];
-
-	return {
-		left: (engine.screen.width / 2) - (sprite.width / 2),
-		top: (engine.screen.height / 2) - (sprite.height / 2)
-	};
-};
-
 engine.player.draw = function() {
-	var location = engine.player.getLocation();
-	engine.handle.drawImage(engine.player.sprite[engine.player.spriteIndex][0], location.left, location.top);
+	var model = engine.player.model;
+	if (!engine.model.isLoaded(model)) {
+		setTimeout(engine.player.draw, 10)
+	} else {
+		var location = engine.model.getLocation(model);
+		engine.handle.drawImage(engine.model.list[model][engine.player.spriteIndex][0],
+			location.x, location.y);
+	}
 };
 
 engine.player.move = function(direction) {
@@ -72,8 +49,7 @@ engine.player.move = function(direction) {
 	var toY = engine.viewport.y + Math.floor(engine.screen.tilesY / 2 - 0.5) - y;
 
 	var map = engine.map.current;
-	if (map[toY] && map[toY][toX] && map[toY][toX].item &&
-		(map[toY][toX].item == 2 || map[toY][toX].item == 6)) {
+	if (map[toY] && map[toY][toX] && map[toY][toX].solid) {
 		engine.keyboard.canInput = true;
 	} else {
 		engine.viewport.playerOffset.y = y * 5;
