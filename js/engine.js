@@ -20,14 +20,16 @@ engine.draw = function() {
 };
 
 engine.start = function(mapData, x, y) {
-	console.log('starting');
-	
 	engine.viewport.x = x || 0;
 	engine.viewport.y = y || 0;
 
+	engine.tile.store(0, 'img/undefined.png');
 	engine.tile.store(1, 'img/grass.png');
 	engine.tile.store(2, 'img/rock.png');
-	engine.tile.store(0, 'img/undefined.png');
+	engine.tile.store(3, 'img/ladderdown.png');
+	engine.tile.store(4, 'img/ladderup.png');
+	engine.tile.store(5, 'img/cave.png');
+	engine.tile.store(6, 'img/sign.png');
 
 	engine.player.store(0, 'img/scientist_n0.png');
 	engine.player.store(1, 'img/scientist_n1.png');
@@ -49,6 +51,4 @@ engine.start = function(mapData, x, y) {
 	engine.draw();
 
 	engine.keyboard.canInput = true;
-
-	console.log('done');
 };

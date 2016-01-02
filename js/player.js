@@ -72,7 +72,8 @@ engine.player.move = function(direction) {
 	var toY = engine.viewport.y + Math.floor(engine.screen.tilesY / 2 - 0.5) - y;
 
 	var map = engine.currentMap;
-	if (map[toY] && map[toY][toX] && map[toY][toX].item) {
+	if (map[toY] && map[toY][toX] && map[toY][toX].item &&
+		(map[toY][toX].item == 2 || map[toY][toX].item == 6)) {
 		engine.keyboard.canInput = true;
 	} else {
 		engine.viewport.playerOffset.y = y * 5;
@@ -108,29 +109,68 @@ engine.player.animate = function() {
 };
 
 engine.player.reset = function() {
+	var x = engine.viewport.x;
+	var y = engine.viewport.y;
+
 	switch (engine.player.spriteIndex) {
 		case 1: case 2:
-			engine.viewport.y--;
+			y--;
 			engine.player.spriteIndex = engine.player.direction.UP;
 			break;
 		case 4: case 5:
-			engine.viewport.x++;
+			x++;
 			engine.player.spriteIndex = engine.player.direction.RIGHT;
 			break;
 		case 7: case 8:
-			engine.viewport.y++;
+			y++;
 			engine.player.spriteIndex = engine.player.direction.DOWN;
 			break;
 		case 10: case 11:
-			engine.viewport.x--;
+			x--;
 			engine.player.spriteIndex = engine.player.direction.LEFT;
 			break;
 	}
+
+	engine.viewport.x = x;
+	engine.viewport.y = y;
 
 	engine.viewport.playerOffset.x = 0;
 	engine.viewport.playerOffset.y = 0;
 
 	engine.draw();
 
+	var tileX = x + Math.floor(engine.screen.tilesX / 2);
+	var tileY = y + Math.floor(engine.screen.tilesY / 2);
+
+	var map = engine.currentMap;
+	if (map[tileY] && map[tileY][tileX] && map[tileY][tileX].onenter !== undefined) {
+		engine.script.call[map[tileY][tileX].onenter]();
+	}
+
 	engine.keyboard.canInput = true;
+};
+
+engine.player.activate = function() {
+	var x = engine.viewport.x + Math.floor(engine.screen.tilesX / 2);
+	var y = engine.viewport.y + Math.floor(engine.screen.tilesY / 2);
+
+	switch (engine.player.spriteIndex) {
+		case engine.player.direction.UP:
+			y--;
+			break;
+		case engine.player.direction.RIGHT:
+			x++;
+			break;
+		case engine.player.direction.DOWN:
+			y++;
+			break;
+		case engine.player.direction.LEFT:
+			x--;
+			break;
+	}
+
+	var map = engine.currentMap;
+	if (map[y] && map[y][x] && map[y][x].onactivate !== undefined) {
+		engine.script.call[map[y][x].onactivate]();
+	}
 };
