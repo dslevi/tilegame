@@ -48,7 +48,7 @@ engine.player.move = function(direction) {
 	var toX = engine.viewport.x + Math.floor(engine.screen.tilesX / 2) - x;
 	var toY = engine.viewport.y + Math.floor(engine.screen.tilesY / 2 - 0.5) - y;
 
-	var map = engine.map.current;
+	var map = engine.map.getCurrent();
 	if (map[toY] && map[toY][toX] && map[toY][toX].solid) {
 		engine.keyboard.canInput = true;
 	} else {
@@ -118,9 +118,9 @@ engine.player.reset = function() {
 	var tileX = x + Math.floor(engine.screen.tilesX / 2);
 	var tileY = y + Math.floor(engine.screen.tilesY / 2);
 
-	var map = engine.map.current;
+	var map = engine.map.getCurrent();
 	if (map[tileY] && map[tileY][tileX] && map[tileY][tileX].onenter !== undefined) {
-		engine.script.call[map[tileY][tileX].onenter]();
+		engine.script.call(map[tileY][tileX].onenter);
 	}
 
 	engine.keyboard.canInput = true;
@@ -145,8 +145,8 @@ engine.player.activate = function() {
 			break;
 	}
 
-	var map = engine.map.current;
+	var map = engine.map.getCurrent();
 	if (map[y] && map[y][x] && map[y][x].onactivate !== undefined) {
-		engine.script.call[map[y][x].onactivate]();
+		engine.script.call(map[y][x].onactivate);
 	}
 };

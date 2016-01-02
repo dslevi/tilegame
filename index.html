@@ -2,31 +2,36 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>JS Bin</title>
+  <title>Tile Game</title>
 	<style>
-	canvas#canvas {
-   		border: 1px dotted #f06;
-	}
+   	canvas#canvas {
+      		border: 1px dotted #f06;
+   	}
 	</style>
 </head>
 <body>
-<canvas id='canvas' width='208' height='144'></canvas>
-<script type="text/javascript" src="js/engine.js"></script>
-<script type="text/javascript" src="js/map.js"></script>
-<script type="text/javascript" src="js/screen.js"></script>
-<script type="text/javascript" src="js/tile.js"></script>
-<script type="text/javascript" src="js/viewport.js"></script>
-<script type="text/javascript" src="js/keyboard.js"></script>
-<script type="text/javascript" src="js/player.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/model.js"></script>
-<script type="text/javascript" src="map/mapone.js"></script>
-<script type="text/javascript" src="map/maptwo.js"></script>
-<script type="text/javascript">
-   window.addEventListener('keydown', engine.keyboard.parseKey);
-   window.addEventListener('load', function() {
-   	engine.start(mapone, 0, 1);
-   }, false);
-</script>
+   <canvas id='canvas' width='208' height='144'></canvas>
+
+   <script type="text/javascript" src="js/engine.js"></script>
+   <script type="text/javascript" src="js/map.js"></script>
+   <script type="text/javascript" src="js/screen.js"></script>
+   <script type="text/javascript" src="js/tile.js"></script>
+   <script type="text/javascript" src="js/viewport.js"></script>
+   <script type="text/javascript" src="js/keyboard.js"></script>
+   <script type="text/javascript" src="js/player.js"></script>
+   <script type="text/javascript" src="js/script.js"></script>
+   <script type="text/javascript" src="js/model.js"></script>
+   <script type="text/javascript" src="js/data.js"></script>
+
+   <script type="text/javascript">
+
+      window.addEventListener('keydown', engine.keyboard.parseKey);
+      window.addEventListener('load', function() {
+         engine.data.load('data/map1.json', function() {
+            engine.start(0, -4, -2);
+         });
+      }, false);
+
+   </script>
 </body>
 </html>

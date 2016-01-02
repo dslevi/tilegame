@@ -1,28 +1,12 @@
 engine.script = {};
 
-engine.script.call =
-[
-   function()
-   {
-      engine.map.set(maptwo);
-      engine.viewport.x = -4;
-      engine.viewport.y = 1;
-      engine.player.spriteIndex = 6;
+engine.script.list = [];
 
-      engine.draw();
-   },
+engine.script.call = function(id) {
+   var script = engine.script.list[id];
+   eval('(function eval_csf(){' + script + '})();');
+};
 
-   function()
-   {
-      engine.map.set(mapone);
-      engine.viewport.x = -4;
-      engine.viewport.y = 5;
-      engine.player.spriteIndex = 6;
-
-      engine.draw();
-   },
-
-   function() {
-      alert('Sup this is a sign!');
-   }
-];
+engine.script.add = function(id, data) {
+   engine.script.list[id] = data;
+};

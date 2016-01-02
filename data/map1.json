@@ -1,0 +1,64 @@
+{
+   "name": "map 1",
+   "mapID": 0,
+   "author": "Niels Groot Obbink",
+
+   "map":
+   [
+      [{"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item": 3, "onactivate": 0, "solid": 1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}]
+   ],
+
+   "tiles":
+   [
+      {
+         "id": 0,
+         "src": "img/undefined.png"
+      },
+      {
+         "id": 1,
+         "src": "img/grass.png"
+      },
+      {
+         "id": 2,
+         "src": "img/rock.png"
+      },
+      {
+         "id": 3,
+         "src": "img/sign.png"
+      }
+   ],
+
+   "models":
+   [
+      {
+         "id": 0,
+         "name": "scientist"
+      },
+      {
+         "id": 1,
+         "name": "officer"
+      }
+   ],
+
+   "scripts":
+   [
+      {
+         "id": 0,
+         "data": "alert('Wanna be an scientist?'); engine.player.model = 0; engine.draw();"
+      }
+   ]
+}
+
