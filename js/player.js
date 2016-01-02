@@ -49,25 +49,39 @@ engine.player.draw = function() {
 
 engine.player.move = function(direction) {
 	engine.keyboard.canInput = false;
-	engine.player.spriteIndex = direction;
+	
+	var x = 0;
+	var y = 0;
 
 	switch (direction) {
 		case engine.player.direction.UP:
-			engine.viewport.playerOffset.y = 5;
+			y = 1;
 			break;
 		case engine.player.direction.RIGHT:
-			engine.viewport.playerOffset.x = -5;
+			x = -1;
 			break;
 		case engine.player.direction.LEFT:
-			engine.viewport.playerOffset.x = 5;
+			x = 1;
 			break;
 		case engine.player.direction.DOWN:
-			engine.viewport.playerOffset.y = -5;
+			y = -1;
 			break;
 	}
 
+	var toX = engine.viewport.x + Math.floor(engine.screen.tilesX / 2) - x;
+	var toY = engine.viewport.y + Math.floor(engine.screen.tilesY / 2 - 0.5) - y;
+
+	var map = engine.currentMap;
+	if (map[toY] && map[toY][toX] && map[toY][toX].item) {
+		engine.keyboard.canInput = true;
+	} else {
+		engine.viewport.playerOffset.y = y * 5;
+		engine.viewport.playerOffset.x = x * 5;
+		setTimeout(engine.player.animate, 50);
+	}
+
+	engine.player.spriteIndex = direction;
 	engine.draw();
-	setTimeout(engine.player.animate, 50);
 };
 
 engine.player.animate = function() {
