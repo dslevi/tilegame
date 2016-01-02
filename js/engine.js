@@ -3,11 +3,6 @@ var engine = {
 };
 engine.canvas = document.getElementById('canvas');
 engine.handle = engine.canvas.getContext('2d');
-engine.currentMap = null;
-
-engine.setMap = function(mapData) {
-	engine.currentMap = mapData;
-};
 
 engine.draw = function() {
 	if (!engine.tile.allLoaded()) {
@@ -47,7 +42,7 @@ engine.start = function(mapData, x, y) {
 	engine.player.store(10, 'img/scientist_w1.png');
 	engine.player.store(11, 'img/scientist_w2.png');
 
-	engine.setMap(mapData);
+	engine.map.set(mapData);
 	engine.draw();
 
 	engine.keyboard.canInput = true;

@@ -1,7 +1,7 @@
 engine.map = {
 	draw: function() {
 		var overflow = engine.viewport.overflowTile;
-		var mapData = engine.currentMap;
+		var mapData = engine.map.current;
 		var mapX = 0;
 		var mapY = 0;
 		
@@ -16,4 +16,10 @@ engine.map = {
 			}
 		}
 	}
+};
+
+engine.map.current = null;
+
+engine.map.set = function(mapData) {
+	engine.map.current = mapData;
 };

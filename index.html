@@ -10,7 +10,7 @@
 	</style>
 </head>
 <body>
-<canvas id='canvas' width='144' height='144'></canvas>
+<canvas id='canvas' width='208' height='144'></canvas>
 <script type="text/javascript" src="js/engine.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
 <script type="text/javascript" src="js/screen.js"></script>
@@ -54,7 +54,7 @@ var maptwo =
 
 window.addEventListener('keydown', engine.keyboard.parseKey);
 window.addEventListener('load', function() {
-	engine.start(mapone);
+	engine.start(mapone, 0, 1);
 }, false);
 
 </script>
