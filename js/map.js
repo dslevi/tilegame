@@ -24,7 +24,7 @@ engine.map.draw = function() {
 			mapX = i + engine.viewport.x;
 			mapY = j + engine.viewport.y;
 
-			tile = (map[mapY] && map[mapY][mapX]) ? map[mapY][mapX] : {ground: 0};
+			tile = engine.map.getTile(mapX, mapY) || {ground: 0};
 			engine.tile.draw(i, j, tile);
 		}
 	}
@@ -32,4 +32,17 @@ engine.map.draw = function() {
 
 engine.map.getCurrent = function() {
 	return engine.map.list[engine.map.current];
+};
+
+engine.map.getTile = function(x, y) {
+	var map = engine.map.getCurrent();
+	return (map[y] && map[y][x]) ? map[y][x] : undefined;
+};
+
+engine.map.tileHasProperty = function(tile, property, hasValue) {
+	if (tile && tile[property] !== undefined) {
+		return (hasValue) ? tile[property] == hasValue : true;
+	} else {
+		return false;
+	}	
 };

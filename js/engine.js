@@ -15,8 +15,7 @@ engine.draw = function() {
 };
 
 engine.start = function(mapID, x, y) {
-	engine.viewport.x = x || 0;
-	engine.viewport.y = y || 0;
+	engine.viewport.set(x, y);
 
 	engine.map.set(mapID);
 	engine.draw();
