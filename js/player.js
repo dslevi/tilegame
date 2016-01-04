@@ -150,3 +150,29 @@ engine.player.activate = function() {
 		engine.script.call(map[y][x].onactivate);
 	}
 };
+
+engine.player.dance = function() {
+	if (engine.player.danceInterval) {
+		engine.player.danceInterval = clearInterval(engine.player.danceInterval);
+		engine.keyboard.canInput = true;
+	} else {
+		engine.keyboard.canInput = false;
+		engine.player.danceInterval = setInterval(function () {
+			engine.player.spriteIndex = 0;
+			engine.draw();
+
+			setTimeout(function() {
+				engine.player.spriteIndex = 1;
+				engine.draw();
+				setTimeout(function() {
+					engine.player.spriteIndex = 2;
+					engine.draw();
+					setTimeout(function() {
+						engine.player.spriteIndex = 3;
+						engine.draw();
+					}, 300);
+				}, 300);
+			}, 300);
+		}, 1200);
+	}
+};

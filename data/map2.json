@@ -1,0 +1,66 @@
+{
+   "name": "map 2",
+   "mapID": 1,
+   "author": "Danielle Levi",
+
+   "map":
+   [
+      [{"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}], 
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item":4, "onenter": 1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item":2}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1}, {"ground":1, "item":2, "solid":1}],
+      [{"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}, {"ground":1, "item":2, "solid":1}]
+   ],
+
+   "tiles":
+   [
+      {
+         "id": 0,
+         "src": "img/undefined.png"
+      },
+      {
+         "id": 1,
+         "src": "img/grass.png"
+      },
+      {
+         "id": 4,
+         "src": "img/rock.png"
+      },
+      {
+         "id": 3,
+         "src": "img/sign.png"
+      },
+      {
+         "id": 2,
+         "src": "img/blue_tile.png"
+      }
+   ],
+
+   "models":
+   [
+      {
+         "id": 2,
+         "name": "scientist"
+      },
+      {
+         "id": 1,
+         "name": "officer"
+      },
+      {
+         "id": 0,
+         "name": "mindy"
+      }
+   ],
+
+   "scripts":
+   [
+      {
+         "id": 0,
+         "data": "alert('This is a sign?'); engine.player.model = 0; engine.draw();"
+      }
+   ]
+}

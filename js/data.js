@@ -1,12 +1,20 @@
 engine.data = {};
 
+engine.data.loaded = {};
+
 engine.data.load = function(file, cb) {
+	if (engine.data.loaded[file]) {
+		if (cb) cb();
+		return;
+	}
+
 	var request = new XMLHttpRequest();
 	request.overrideMimeType('application/json');
 	request.open('get', file, true);
 	request.addEventListener('readystatechange', function() {
 		if (this.readyState == 4 && this.status != 404) {
 			engine.data.parse(this.responseText, cb);
+			engine.data.loaded[file] = true;
 		}
 	});
 	request.send();

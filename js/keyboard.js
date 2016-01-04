@@ -10,11 +10,12 @@ engine.keyboard.direction = {
 };
 
 engine.keyboard.action = {
-	ACTIVATE: 65
+	ACTIVATE: 65,
+	DANCE: 68
 };
 
 engine.keyboard.parseKey = function(event) {
-	if (!engine.keyboard.canInput) return;
+	if (!engine.keyboard.canInput && (event.keyCode !== engine.keyboard.action.DANCE)) return;
 
 	switch(event.keyCode) {
 		case engine.keyboard.direction.UP:
@@ -31,6 +32,9 @@ engine.keyboard.parseKey = function(event) {
 			break;
 		case engine.keyboard.action.ACTIVATE:
 			engine.player.activate();
+			break;
+		case engine.keyboard.action.DANCE:
+			engine.player.dance();
 			break;
 	}
 };
