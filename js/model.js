@@ -23,10 +23,19 @@ engine.model.isLoaded = function(id) {
 	return true;
 };
 
-engine.model.getLocation = function(id) {
+engine.model.getLocation = function(id, x, y) {
 	var character = engine.model.list[id][0][0];
 	return {
-		x: Math.floor((engine.screen.width / 2) - (character.width / 2)),
-		y: Math.floor((engine.screen.height / 2) - character.height + 8)
+		x: Math.floor((x / 2) - (character.width / 2)),
+		y: Math.floor((y / 2) - character.height + 8)
 	};
+};
+
+engine.model.draw = function(model, index, x, y) {
+	if (!engine.model.isLoaded(model)) {
+		setTimeout(engine.model.draw, 10)
+	} else {
+		console.log(x, y);
+		engine.handle.drawImage(engine.model.list[model][index][0], x, y);
+	}
 };

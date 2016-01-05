@@ -15,13 +15,8 @@ engine.player.leftLeg = false;
 
 engine.player.draw = function() {
 	var model = engine.player.model;
-	if (!engine.model.isLoaded(model)) {
-		setTimeout(engine.player.draw, 10)
-	} else {
-		var location = engine.model.getLocation(model);
-		engine.handle.drawImage(engine.model.list[model][engine.player.spriteIndex][0],
-			location.x, location.y);
-	}
+	var location = engine.model.getLocation(model, engine.screen.width, engine.screen.height);
+	engine.model.draw(model, engine.player.spriteIndex, location.x, location.y);
 };
 
 engine.player.move = function(direction) {

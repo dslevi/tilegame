@@ -11,6 +11,8 @@ engine.draw = function() {
 		engine.handle.clearRect(0, 0, engine.canvas.width, engine.canvas.height);
 		engine.map.draw();
 		engine.player.draw();
+		engine.npc.draw(0);
+		engine.npc.draw(1);
 	}
 };
 

@@ -37,5 +37,9 @@ engine.data.parse = function(response, cb) {
 		engine.script.add(script.id, script.data);
 	});
 
+	data.npcs.forEach(function(npc) {
+		engine.npc.add(npc.id, npc);
+	});
+
 	if (cb) cb();
 };
