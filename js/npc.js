@@ -12,8 +12,14 @@ engine.npc.draw = function(id) {
 	var npc = engine.npc.list[id];
 	var location = engine.model.getLocation(id, tileSize, tileSize);
 
-	var x = (npc.x * tileSize) - (engine.viewport.x * tileSize) + location.x + engine.viewport.playerOffset.x;
-	var y = (npc.y * tileSize) - (engine.viewport.y * tileSize) + location.y + engine.viewport.playerOffset.y;
+	var x = (npc.x * tileSize) - (engine.viewport.x * tileSize) + location.x;
+	var y = (npc.y * tileSize) - (engine.viewport.y * tileSize) + location.y;
 
 	engine.model.draw(npc.model, 6, x, y);
+};
+
+engine.npc.hasNpc = function(x, y) {
+	return !!engine.npc.list.find(function(npc) {
+		return npc.x == x && npc.y == y;
+	});
 };

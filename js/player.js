@@ -44,7 +44,7 @@ engine.player.move = function(direction) {
 	var toY = engine.viewport.y + Math.floor(engine.screen.tilesY / 2 - 0.5) - y;
 	var toTile = engine.map.getTile(toX, toY);
 
-	if (engine.map.tileHasProperty(toTile, 'solid', 1)) {
+	if (engine.map.tileHasProperty(toTile, 'solid', 1) || engine.npc.hasNpc(toX, toY)) {
 		engine.keyboard.canInput = true;
 	} else {
 		engine.viewport.playerOffset.y = y * 5;
